@@ -10,8 +10,8 @@ namespace ConsoleApp114
     {
         static void Main(string[] args)
         {
-            int[] arr = { 10, 32, 334, 43, 4, 238, 39, 4309, 4348923, 242334, 347, 6756, -3434, 42342, 324893, 434352, 2543439 };
-            BubbleSort(arr);
+            int[] arr = { 2, 1, 32, 49, 43,34,3454,4362345,34534,78934,45345,3242134,2342379,4134};
+            SelectionSort(arr);
             Console.ReadLine();
         }
 
@@ -39,6 +39,46 @@ namespace ConsoleApp114
             {
                 Console.WriteLine(a);
             }
+        }
+
+        static void SelectionSort(int [] arr)
+        {
+            if(arr==null ||!arr.Any())
+            {
+                return;
+            }
+
+             
+            for(int i=0;i<arr.Length-1;i++)
+            {
+                int minIndex = i;
+                for (int j=i+1;j<arr.Length;j++)
+                {
+                   if(arr[minIndex]>arr[j])
+                    {
+                        minIndex = j;
+                    }
+                }
+
+                if(minIndex!=i)
+                {
+                    int temp = arr[minIndex];
+                    arr[minIndex] = arr[i];
+                    arr[i] = temp;
+                }
+            }
+
+            foreach(var a in arr)
+            {
+                Console.WriteLine(a);
+            }
+        }
+
+        private static void SwapTwoNumbers(ref int x,ref int y)
+        {
+            int temp = x;
+            x = y;
+            y = temp;
         }
     }
 }
