@@ -12,8 +12,8 @@ namespace ConsoleApp115
         {
             Random rnd = new Random();
 
-            int[] arr = new int[100];
-            for(int i=0;i<100;i++)
+            int[] arr = new int[20];
+            for(int i=0;i<20;i++)
             {
                 arr[i] = rnd.Next(1, 10000);
             }
@@ -25,8 +25,8 @@ namespace ConsoleApp115
                 Console.WriteLine(a);
             }
 
-            Console.WriteLine("\n\n\nAfter SelectionSort array:");
-            SelectionSort(arr);
+            Console.WriteLine("\n\n\nAfter the Insertion Sort:");
+            InsertionSort(arr);
             Console.ReadLine();
         }
 
@@ -80,6 +80,33 @@ namespace ConsoleApp115
                     arr[minIndex] = arr[i];
                     arr[i] = temp;
                 }
+            }
+
+            foreach(var a in arr)
+            {
+                Console.WriteLine(a);
+            }
+        }
+
+        static void InsertionSort(int [] arr)
+        {
+            if(arr==null || !arr.Any())
+            {
+                return;
+            }
+
+            for(int i=1;i<arr.Length;i++)
+            {
+                int j = i - 1;
+                int temp = arr[i];
+
+                while(j>=0 && temp<arr[j])
+                {
+                    arr[j + 1] = arr[j];
+                    j--;
+                }
+
+                arr[j + 1] = temp;
             }
 
             foreach(var a in arr)
