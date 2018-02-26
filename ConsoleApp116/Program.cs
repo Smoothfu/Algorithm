@@ -13,6 +13,7 @@ namespace ConsoleApp116
             int[] arr = { -23, 3, 43, 47, 4389, 4389, 434, 4348, 890, 4899, 434798, 4379823, -43489, 898879, 789087798, 437892324, 46382734, 67889893 };
             BubbleSort(arr);
             SelectionSort(arr);
+            InsertSort(arr);
             Console.ReadLine();
         }
 
@@ -84,6 +85,38 @@ namespace ConsoleApp116
             }
 
             Console.WriteLine("\n\n\n");
+        }
+
+        static void InsertSort(int[] arr)
+        {
+            if(arr==null || !arr.Any())
+            {
+                return;
+            }
+
+            for(int i=1;i<arr.Length;i++)
+            {
+                int j = i - 1;
+                int temp = arr[i];
+
+                while (j >= 0 && temp<arr[j])
+                {
+                    arr[j + 1] = arr[j];
+                    j--;
+                }
+
+                arr[j + 1] = temp;
+            }
+
+            Console.WriteLine("Insertion Sort:");
+            foreach(var a in arr)
+            {
+                Console.WriteLine(a);
+            }
+
+            Console.WriteLine("\n\n\n");
+
+
         }
     }
 }
