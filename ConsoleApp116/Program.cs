@@ -14,6 +14,14 @@ namespace ConsoleApp116
             BubbleSort(arr);
             SelectionSort(arr);
             InsertSort(arr);
+
+            QuickSort(arr,0,arr.Length-1);
+            Console.WriteLine("Quick Sort:");
+            foreach(var a in arr)
+            {
+                Console.WriteLine(a);
+            }
+            Console.WriteLine("\n\n\n");
             Console.ReadLine();
         }
 
@@ -115,8 +123,41 @@ namespace ConsoleApp116
             }
 
             Console.WriteLine("\n\n\n");
+        }
 
+        private static int PartitionSort(int[]arr,int i,int j)
+        {
+            int pivot = arr[j];
+            int small = i - 1;
+            for(int k=i;k<j;k++)
+            {
+                if(arr[k]<=pivot)
+                {
+                    Swap(ref arr, ref k, ref small);
+                }
+            }
 
+            int small1 = small + 1;
+            Swap(ref arr, ref j, ref small1);
+            return small + 1;            
+        }
+
+        private static void Swap(ref int[]arr,ref int k,ref int small)
+        {
+            int temp;
+            temp = arr[k];
+            arr[k] = arr[small];
+            arr[small] = temp;
+        }
+
+        private static void QuickSort(int []arr,int i,int j)
+        {
+            if(i<j)
+            {
+                int pos = PartitionSort(arr, i, j);
+                QuickSort(arr, i, pos - 1);
+                QuickSort(arr, pos + 1, j);
+            }
         }
     }
 }
